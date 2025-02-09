@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    .box{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        margin-top: 30px;
+    }
+</style>
+<body>
+    <button class="btn btn-primary mt-5 ms-5" id="show">Show</button>
+    <button class="btn btn-primary mt-5 " id="hide">Hide</button>
+    <button class="btn btn-primary mt-5 " id="show_hide">Show/Hide</button>
+    <div class="box">
+
+    </div>
+</body>
+</html>
+<script>
+    // structure for jqery
+    $(document).ready(function(){
+        $('#show').click(function(){
+            // $('.box').show(500)
+            // $('.box').fadeIn(500)
+            $('.box').slideDown(500)
+        })
+        $('#hide').click(function(){
+            // $('.box').hide(500)
+            // $('.box').fadeOut(500)
+            $('.box').slideUp(500)
+        })
+        $('#show_hide').click(function(){
+            // $('.box').toggle(500)
+            // $('.box').fadeToggle(500)
+            $('.box').slideToggle(500)
+        })
+    })
+</script>
