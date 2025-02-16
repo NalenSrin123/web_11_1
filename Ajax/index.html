@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+    <nav>
+        <a href="#" id="home">Home</a>
+        <a href="#" id="shop">Shop</a>
+        <a href="#" id="news">News</a>
+        <a href="#" id="contact">Contact</a>
+    </nav>
+    <section>
+        
+    </section>
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        function ChangePage(link){
+            $.ajax({
+                url:link,
+                cache:false,
+                success:function(respone){
+                    $('section').html(respone);
+                } 
+            })
+        }
+        ChangePage('home.html');
+        function clickLink(link,page){
+            $(link).click(function(){
+                ChangePage(page);
+            })
+        }
+        clickLink("#shop","shop.html");
+        clickLink("#home","home.html");
+        clickLink("#news","news.html");
+        clickLink("#contact","contact.html");
+        
+    })
+</script>
