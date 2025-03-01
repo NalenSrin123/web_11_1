@@ -1,0 +1,158 @@
+
+    <div id="carouselExampleControls" class="carousel slide mt-3 container" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="Image/banner1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://marketplace.canva.com/EAFHG6sbLsQ/1/0/1600w/canva-brown-beige-simple-special-sale-banner-lQfPvhnznqs.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="Image/banner3.webp" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <article class="container p-2">
+            <h1 class="text-start mt-5">NEW PRODUCTS</h1>
+            <div class="box-card mt-3">
+                <div class="row" id="new">
+                  
+                   
+                </div>
+            </div>
+      </article>
+      <article class="container p-2">
+            <h1 class="text-start mt-5">PROMOTION PRODUCTS</h1>
+            <div class="box-card mt-3">
+                <div class="row" id="promotion">
+                    
+                </div>
+            </div>
+      </article>
+      <article class="container p-2">
+            <h1 class="text-start mt-5">POPULAR PRODUCTS</h1>
+            <div class="box-card mt-3">
+                <div class="row">
+                    
+                    
+                    
+                </div>
+            </div>
+      </article>
+
+<script type="module">
+    import {products} from './data.js'
+    $(document).ready(function(){
+        
+      
+        
+        function newProduct(){
+            products.reverse()
+           let product='';
+            let count=1; 
+            products.forEach((item)=>{
+                if(count<=4){
+                    if(item.reqular_price==0){     
+                    product+=` <div class="col-6 col-sm-6 col-xl-3" >
+                        <div class="cards" data-id="${item.id}">
+                            <div class="image">
+                                <img src="${item.image}" alt="">
+                            </div>
+                            <div class="title">
+                                <span>Price :$${item.sale_price}</span>
+                                <p>${item.title}
+                                </p>
+                                <div class="icon d-flex gap-1">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    `;
+                }else{
+                    product+=`
+                         <div class="col-6 col-sm-6 col-xl-3" >
+                        <div class="cards" data-id="${item.id}">
+                            <div class="image">
+                                <div class="promotion">
+                                    Promotion
+                                </div>
+                                <img src="${item.image}" alt="">
+                            </div>
+                            <div class="title">
+                                <del>Price :$${item.reqular_price}</del>
+                                <span>$${item.sale_price}</span>
+                                <p>${item.name}
+                                </p>
+                                <div class="icon d-flex gap-1">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+                count++;
+                }
+            })  
+            $('#new').html(product) 
+        }
+        newProduct();
+        function promotion(){
+            let product='';
+            let count=1;
+            products.forEach((item)=>{
+                if(item.reqular_price!=0){
+                    if(count<=4){
+                        product+=`
+                         <div class="col-6 col-sm-6 col-xl-3" >
+                        <div class="cards" data-id="${item.id}">
+                            <div class="image">
+                                <div class="promotion">
+                                    Promotion
+                                </div>
+                                <img src="${item.image}" alt="">
+                            </div>
+                            <div class="title">
+                                <del>Price :$${item.reqular_price}</del>
+                                <span>$${item.sale_price}</span>
+                                <p>${item.name}
+                                </p>
+                                <div class="icon d-flex gap-1">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    count++;
+                    }
+                    
+                }
+            })
+            $('#promotion').html(product)
+        }
+        promotion();
+    })
+</script>      
